@@ -1,4 +1,4 @@
 export const ENDPOINTS = {
   BOOKINGS: 'bookings',
-  BOOKINGS_BY_ID: (id: number) => `bookings/${id}`,
+  BOOKINGS_BY_ID: (id: string) => `bookings/${id}`,
 } as const;

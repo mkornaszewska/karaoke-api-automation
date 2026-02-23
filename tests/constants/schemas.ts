@@ -1,5 +1,9 @@
+export type SortOrder = 'asc' | 'desc';
+export const BOOKING_STATUSES = ['confirmed', 'pending', 'cancelled', 'completed'] as const;
+export type BookingStatus = (typeof BOOKING_STATUSES)[number];
+
 export const bookingTypeSchema = {
-  id: 'number',
+  id: 'string',
   user_id: 'number',
   room_id: 'number',
   date: 'string',
@@ -13,7 +17,7 @@ export const bookingTypeSchema = {
 } as const;
 
 export interface Booking {
-  id: number;
+  id: string;
   user_id: number;
   room_id: number;
   date: string;
@@ -21,9 +25,19 @@ export interface Booking {
   duration_hours: number;
   party_size: number;
   total_price: number;
-  status: 'confirmed' | 'pending' | 'cancelled'; // ← Union type for enum
+  status: BookingStatus;
   special_requests: string;
   created_at: string;
 }
 
-export const BOOKING_STATUSES = ['confirmed', 'pending', 'cancelled'] as const;
+export interface CreateBookingRequest {
+  user_id: number;
+  room_id: number;
+  date: string;
+  start_time: string;
+  duration_hours: number;
+  party_size: number;
+  total_price: number;
+  status: BookingStatus;
+  special_requests?: string;
+}

@@ -11,29 +11,37 @@ A comprehensive API test automation framework for a karaoke booking management s
 - ✅ Error scenario testing (404 handling, invalid inputs)
 - ✅ Query parameter testing (filtering, sorting)
 - ✅ TypeScript for type safety and better developer experience
-- ✅ Reusable helpers and centralized constants
+- ✅ Reusable helpers, fixtures, and centralized constants
 - ✅ Clean, maintainable test organization
+- ✅ CI/CD pipeline via GitHub Actions
 
 ## 🛠️ Tech Stack
 
 - **[Playwright](https://playwright.dev/)** - Modern API testing framework
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[json-server](https://github.com/typicode/json-server)** - Local mock REST API
+- **[my-json-server](https://my-json-server.typicode.com/)** - Live hosted mock API
 - **[ESLint](https://eslint.org/)** - Code quality and consistency
 - **[Prettier](https://prettier.io/)** - Code formatting
-- **[my-json-server](https://my-json-server.typicode.com/)** - Mock REST API for testing
 
 ## 📁 Project Structure
 
 ```
 tests/
+├── api/
+│   └── bookings/
+│       ├── bookings.get.spec.ts   # GET endpoint test suite
+│       └── bookings.post.spec.ts  # POST endpoint test suite
 ├── constants/
-│   ├── endpoints.ts       # API endpoint definitions
-│   └── schemas.ts         # TypeScript interfaces and data schemas
-├── helpers/
-│   └── api-helpers.ts     # Reusable API request functions
-└── specs/
-    └── bookings/
-        └── get.spec.ts    # GET endpoint test suite
+│   ├── endpoints.ts               # API endpoint definitions
+│   └── schemas.ts                 # TypeScript interfaces and data schemas
+├── e2e/                           # End-to-end tests (coming soon)
+├── fixtures/
+│   ├── booking-data.ts            # Valid test data
+│   └── invalid-booking-data.ts    # Invalid data for error scenario testing
+└── helpers/
+    ├── api-helpers.ts             # Reusable API request functions
+    └── data-generators.ts         # Dynamic test data generation
 ```
 
 ## 🧪 Test Coverage
@@ -41,47 +49,51 @@ tests/
 ### GET /bookings
 
 #### HTTP Contract
-
 - ✅ Returns 200 OK status
 - ✅ Returns `application/json` content-type
 - ✅ Returns array of bookings
 
 #### Response Structure
-
 - ✅ All required properties present (id, user_id, room_id, date, start_time, duration_hours, party_size, total_price, status, special_requests, created_at)
 - ✅ Correct primitive types (number, string)
 
 #### Data Validation
-
 - ✅ Date format: YYYY-MM-DD (regex + Date parsing)
 - ✅ Time format: HH:MM in 24-hour format (00:00 to 23:59)
 - ✅ Timestamp format: ISO 8601 with UTC timezone
-- ✅ Status enum validation (confirmed, pending, cancelled)
+- ✅ Status enum validation (confirmed, pending, cancelled, completed)
 - ✅ Numeric ranges (all IDs, prices, and counts > 0)
 
 #### Error Handling
-
 - ✅ 404 for non-existent booking IDs
 - ✅ 404 for invalid booking ID formats
 
 #### Query Parameters
-
 - ✅ Filtering by status (enum)
 - ✅ Filtering by room_id (numeric)
 - ✅ Sorting by date (ascending)
 
-### Coming Soon
+### POST /bookings
 
-- 🔜 POST /bookings - Create new bookings
+#### Happy Path
+- ✅ Creates booking with valid complete data
+- ✅ Returns 201 Created status
+- ✅ Returns auto-generated ID
+- ✅ All submitted fields echoed back correctly
+- ✅ Booking persists and is retrievable via GET
+
+### Coming Soon
 - 🔜 PUT /bookings/:id - Update existing bookings
 - 🔜 DELETE /bookings/:id - Delete bookings
+- 🔜 GET /rooms - Room listings and details
+- 🔜 GET /users - User management endpoints
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
+- npm
 
 ### Installation
 
@@ -92,37 +104,48 @@ cd karaoke-booking-api
 
 # Install dependencies
 npm install
+
+# Install Playwright browsers
+npx playwright install
 ```
 
 ### Running Tests
 
 ```bash
-# Run all tests
+# Run all tests (starts local json-server automatically)
 npm test
+
+# Run only API tests
+npm run test:api
 
 # Run tests in UI mode (interactive)
 npx playwright test --ui
 
 # Run specific test file
-npx playwright test bookings/get.spec.ts
+npx playwright test tests/api/bookings/bookings.get.spec.ts
 
 # Run tests with detailed output
 npx playwright test --reporter=list
 
-# Generate HTML report
+# Generate and open HTML report
 npx playwright test --reporter=html
 ```
 
-## 🌐 API Endpoint
+## 🌐 API Endpoints
 
-Tests run against: `https://my-json-server.typicode.com/mkornaszewska/karaoke-booking-api`
+Tests can run against two environments, configured via `.env`:
 
-**Note:** This project uses my-json-server with a static `db.json` file for consistent, reproducible test data.
+| Environment | URL |
+|---|---|
+| Local (default) | `http://localhost:3000` |
+| Live | `https://my-json-server.typicode.com/mkornaszewska/karaoke-booking-api` |
+
+Copy `.env.example` to `.env` and set `BASE_URL` for the desired environment. When running locally, Playwright starts `json-server` automatically before tests run.
 
 ## 📝 Known Limitations
 
-- **Sorting:** my-json-server does not support descending sort with the `-field` syntax. Only ascending sort is tested.
-- **Mutations:** POST/PUT/DELETE operations are not persisted by my-json-server (changes are simulated but not saved).
+- **Sorting:** json-server does not support descending sort with the `-field` syntax. Only ascending sort is tested.
+- **Mutations:** POST/PUT/DELETE operations are not persisted by my-json-server (changes are simulated but not saved). Local json-server does persist mutations — the database is reset to seed data before each test run via `global-setup.ts`.
 
 ## 🏗️ Design Patterns
 
@@ -140,6 +163,13 @@ Common operations abstracted into reusable functions:
 
 - `getBookings()` - Fetch and parse booking list
 - `expectJsonResponse()` - Validate HTTP status and content-type
+
+### Fixtures
+
+Test data separated by validity:
+
+- `booking-data.ts` - Valid scenarios (complete, minimal, multi-variant)
+- `invalid-booking-data.ts` - Invalid scenarios for error case testing
 
 ### Constants Management
 

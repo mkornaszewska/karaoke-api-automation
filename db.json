@@ -1,0 +1,242 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Shibuya Small",
+      "size": "small",
+      "capacity": 4,
+      "hourly_rate": 1500,
+      "weekend_rate": 1800,
+      "amenities": ["m2", "tmb", "bl"],
+      "floor": 2,
+      "has_window": false,
+      "theme": "modern",
+      "is_available": true,
+      "average_rating": 4.2,
+      "image_url": "/r/1.jpg",
+      "reviews": [
+        {
+          "id": 1,
+          "user_id": 3,
+          "booking_id": 3,
+          "rating": 4,
+          "comment": "Cozy, good value.",
+          "would_recommend": true,
+          "created_at": "2026-01-30T17:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Harajuku Medium",
+      "size": "medium",
+      "capacity": 8,
+      "hourly_rate": 2500,
+      "weekend_rate": 3000,
+      "amenities": ["m4", "tmb", "mb", "db", "nl"],
+      "floor": 3,
+      "has_window": true,
+      "theme": "retro",
+      "is_available": true,
+      "average_rating": 4.7,
+      "image_url": "/r/2.jpg",
+      "reviews": [
+        {
+          "id": 2,
+          "user_id": 1,
+          "booking_id": 1,
+          "rating": 5,
+          "comment": "Perfect for parties.",
+          "would_recommend": true,
+          "created_at": "2026-02-02T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Roppongi VIP",
+      "size": "vip",
+      "capacity": 10,
+      "hourly_rate": 6000,
+      "weekend_rate": 8000,
+      "amenities": ["m4", "tmb", "db", "ps", "lc", "mb"],
+      "floor": 5,
+      "has_window": true,
+      "theme": "luxury",
+      "is_available": true,
+      "average_rating": 4.9,
+      "image_url": "/r/3.jpg",
+      "reviews": []
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "room_id": 2,
+      "date": "2026-02-01",
+      "start_time": "18:00",
+      "duration_hours": 2,
+      "party_size": 6,
+      "total_price": 5000,
+      "status": "confirmed",
+      "special_requests": "Birthday",
+      "created_at": "2026-01-25T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "room_id": 3,
+      "date": "2026-02-05",
+      "start_time": "20:00",
+      "duration_hours": 3,
+      "party_size": 8,
+      "total_price": 24000,
+      "status": "confirmed",
+      "special_requests": "Work event",
+      "created_at": "2026-01-26T14:15:00Z"
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "room_id": 1,
+      "date": "2026-01-30",
+      "start_time": "15:00",
+      "duration_hours": 1,
+      "party_size": 2,
+      "total_price": 1500,
+      "status": "completed",
+      "special_requests": "",
+      "created_at": "2026-01-29T09:00:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "karaoke_lover",
+      "email": "karaoke@example.com",
+      "phone": "090-1234-5678",
+      "member_since": "2024-03-15",
+      "total_bookings": 12,
+      "favorite_room_type": "medium",
+      "loyalty_points": 350,
+      "preferred_time": "evening",
+      "is_active": true
+    },
+    {
+      "id": 2,
+      "username": "events_mgr",
+      "email": "events@company.jp",
+      "phone": "080-9876-5432",
+      "member_since": "2023-11-20",
+      "total_bookings": 25,
+      "favorite_room_type": "vip",
+      "loyalty_points": 820,
+      "preferred_time": "night",
+      "is_active": true
+    },
+    {
+      "id": 3,
+      "username": "weekend_singer",
+      "email": "singer@example.com",
+      "phone": "070-5555-1234",
+      "member_since": "2025-06-10",
+      "total_bookings": 5,
+      "favorite_room_type": "small",
+      "loyalty_points": 125,
+      "preferred_time": "afternoon",
+      "is_active": true
+    }
+  ],
+  "songs": [
+    {
+      "id": 1,
+      "title": "Plastic Love",
+      "artist": "Mariya Takeuchi",
+      "genre": "City Pop",
+      "language": "Japanese",
+      "difficulty": "medium",
+      "duration_seconds": 265,
+      "times_sung": 1523,
+      "average_rating": 4.7,
+      "release_year": 1984,
+      "is_available": true
+    },
+    {
+      "id": 2,
+      "title": "Lemon",
+      "artist": "Kenshi Yonezu",
+      "genre": "J-Pop",
+      "language": "Japanese",
+      "difficulty": "hard",
+      "duration_seconds": 253,
+      "times_sung": 2847,
+      "average_rating": 4.9,
+      "release_year": 2018,
+      "is_available": true
+    },
+    {
+      "id": 3,
+      "title": "Don't Stop Me Now",
+      "artist": "Queen",
+      "genre": "Rock",
+      "language": "English",
+      "difficulty": "hard",
+      "duration_seconds": 218,
+      "times_sung": 3921,
+      "average_rating": 4.8,
+      "release_year": 1978,
+      "is_available": true
+    },
+    {
+      "id": 4,
+      "title": "Cruel Angel's Thesis",
+      "artist": "Yoko Takahashi",
+      "genre": "Anime",
+      "language": "Japanese",
+      "difficulty": "medium",
+      "duration_seconds": 245,
+      "times_sung": 4521,
+      "average_rating": 4.8,
+      "release_year": 1995,
+      "is_available": true
+    },
+    {
+      "id": 5,
+      "title": "Kurenai",
+      "artist": "X Japan",
+      "genre": "Visual Kei Rock",
+      "language": "Japanese",
+      "difficulty": "expert",
+      "times_sung": 3156,
+      "average_rating": 4.9,
+      "is_available": true
+    }
+  ],
+  "menu_items": [
+    {
+      "id": 1,
+      "name": "Soft Drink Package",
+      "category": "beverage_package",
+      "price": 500,
+      "description": "Unlimited soft drinks",
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Premium Drink Package",
+      "category": "beverage_package",
+      "price": 1500,
+      "description": "Soft + beer + sake",
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Karaage Plate",
+      "category": "food",
+      "price": 800,
+      "description": "Fried chicken",
+      "available": true
+    }
+  ]
+}
