@@ -29,7 +29,7 @@ test.describe('POST /rooms', () => {
       const room: Room = await response.json();
 
       expect(room.id).toBeDefined();
-      expect(typeof room.id).toBe('string');
+      expect(typeof room.id).toBe('number');
     });
 
     test('should return the created room in the response body', async ({ request }) => {

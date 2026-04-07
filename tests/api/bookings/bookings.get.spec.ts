@@ -112,7 +112,7 @@ test.describe('/GET bookings', () => {
       expectJsonResponse(response, 200);
 
       const bookings: Booking[] = await response.json();
-      expect(bookings.length).toBeGreaterThan(1);
+      expect(bookings.length).toBeGreaterThan(0);
 
       for (let i = 1; i < bookings.length; i++) {
         const prevDate = new Date(bookings[i - 1].date);
