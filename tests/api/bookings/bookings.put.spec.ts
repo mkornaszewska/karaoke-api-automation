@@ -55,7 +55,10 @@ test.describe('PUT /bookings/:id', () => {
 
   test.describe('Partial update (PATCH)', () => {
     test('should update only the status with PATCH', async ({ request }) => {
-      const response = await request.patch(ENDPOINTS.BOOKINGS_BY_ID(3), {
+      const postRes = await request.post(ENDPOINTS.BOOKINGS, { data: validBookingData });
+      const { id } = await postRes.json();
+
+      const response = await request.patch(ENDPOINTS.BOOKINGS_BY_ID(id), {
         data: { status: 'cancelled' },
       });
 
@@ -68,10 +71,10 @@ test.describe('PUT /bookings/:id', () => {
     });
 
     test('should update only special_requests with PATCH', async ({ request }) => {
-      const before = await request.get(ENDPOINTS.BOOKINGS_BY_ID(3));
-      const beforeBody = await before.json();
+      const postRes = await request.post(ENDPOINTS.BOOKINGS, { data: validBookingData });
+      const { id } = await postRes.json();
 
-      const response = await request.patch(ENDPOINTS.BOOKINGS_BY_ID(3), {
+      const response = await request.patch(ENDPOINTS.BOOKINGS_BY_ID(id), {
         data: { special_requests: 'Extra mic needed' },
       });
 
@@ -80,8 +83,8 @@ test.describe('PUT /bookings/:id', () => {
       const responseBody = await response.json();
 
       expect(responseBody.special_requests).toEqual('Extra mic needed');
-      expect(responseBody.room_id).toEqual(beforeBody.room_id);
-      expect(responseBody.duration_hours).toEqual(beforeBody.duration_hours);
+      expect(responseBody.room_id).toEqual(validBookingData.room_id);
+      expect(responseBody.duration_hours).toEqual(validBookingData.duration_hours);
     });
 
     test('should persist PATCH changes — GET after PATCH', async ({ request }) => {
