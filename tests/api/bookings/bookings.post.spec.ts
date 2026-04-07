@@ -1,4 +1,4 @@
-import { test, request, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { ENDPOINTS } from '../../constants/endpoints';
 import { validBookingData } from '../../fixtures/booking-data';
 import { expectJsonResponse } from '../../helpers/api-helpers';
@@ -34,13 +34,7 @@ test.describe('/POST bookings', () => {
       ] as const;
 
       fieldsToVerify.forEach((field) => {
-        const expected = validBookingData[field];
-        const actual = booking[field];
-
-        if (actual !== expected) {
-          console.error(`Mismatch: ${field}`, { expected, actual });
-        }
-        expect(actual).toBe(expected);
+        expect(booking[field]).toBe(validBookingData[field]);
       });
 
       expect(booking.created_at).toBeDefined();
