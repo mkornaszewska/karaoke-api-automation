@@ -1,5 +1,7 @@
 # Karaoke Booking API - Test Automation Suite
 
+![API Tests](https://github.com/mkornaszewska/karaoke-api-automation/actions/workflows/api-tests.yml/badge.svg)
+
 A comprehensive API test automation framework for a karaoke booking management system, built with Playwright and TypeScript.
 
 ## Tech Stack
@@ -147,3 +149,7 @@ Copy `.env.example` to `.env` and set `BASE_URL` for the desired environment. Wh
 - **Fixtures** — test data separated by validity (`booking-data.ts` for happy path, `invalid-booking-data.ts` for error scenarios)
 - **Centralized constants** — endpoints and schemas defined once and imported everywhere
 - **Test isolation** — mutation tests POST fresh resources and use their IDs rather than depending on seed data
+
+## Test Report
+
+Latest test report: https://mkornaszewska.github.io/karaoke-api-automation/
