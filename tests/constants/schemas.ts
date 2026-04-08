@@ -60,7 +60,7 @@ export interface CreateRoomRequest {
 }
 
 export const bookingTypeSchema = {
-  id: 'number',
+  id: 'string',
   user_id: 'number',
   room_id: 'number',
   date: 'string',

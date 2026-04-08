@@ -9,11 +9,6 @@
     "target": "ES2022",
     "types": ["node", "@playwright/test"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "playwright-report",
-    "test-results"
-  ],
+  "exclude": ["node_modules", "dist", "playwright-report", "test-results"],
   "include": ["**/*.ts"]
 }

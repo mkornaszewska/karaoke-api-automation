@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ENDPOINTS } from '../../constants/endpoints';
 import { expectJsonResponse } from '../../helpers/api-helpers';
 import { validBookingData } from '../../fixtures/booking-data';
+import { Booking, bookingTypeSchema } from '../../constants/schemas';
 
 const replacementBooking = {
   user_id: 1,
@@ -19,11 +20,20 @@ const replacementBooking = {
 test.describe('PUT /bookings/:id', () => {
   test.describe('Full update (PUT)', () => {
     test('should replace a booking and return 200', async ({ request }) => {
-      const response = await request.put(ENDPOINTS.BOOKINGS_BY_ID(1), { data: replacementBooking });
+      const postRes = await request.post(ENDPOINTS.BOOKINGS, { data: validBookingData });
+      const { id } = await postRes.json();
+
+      const response = await request.put(ENDPOINTS.BOOKINGS_BY_ID(id), {
+        data: replacementBooking,
+      });
 
       expectJsonResponse(response, 200);
 
       const responseBody = await response.json();
+
+      Object.entries(bookingTypeSchema).forEach(([property, expectedType]) => {
+        expect(typeof responseBody[property as keyof Booking]).toBe(expectedType);
+      });
 
       expect(responseBody.status).toEqual('pending');
       expect(responseBody.special_requests).toEqual('Updated via PUT');
@@ -31,11 +41,16 @@ test.describe('PUT /bookings/:id', () => {
     });
 
     test('should persist the update — GET after PUT', async ({ request }) => {
-      const response = await request.put(ENDPOINTS.BOOKINGS_BY_ID(2), { data: replacementBooking });
+      const postRes = await request.post(ENDPOINTS.BOOKINGS, { data: validBookingData });
+      const { id } = await postRes.json();
+
+      const response = await request.put(ENDPOINTS.BOOKINGS_BY_ID(id), {
+        data: replacementBooking,
+      });
 
       expectJsonResponse(response, 200);
 
-      const getBooking = await request.get(ENDPOINTS.BOOKINGS_BY_ID(2));
+      const getBooking = await request.get(ENDPOINTS.BOOKINGS_BY_ID(id));
       expectJsonResponse(getBooking, 200);
 
       const getResponse = await getBooking.json();
