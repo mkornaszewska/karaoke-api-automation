@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { ENDPOINTS } from '../../constants/endpoints';
 import { expectJsonResponse } from '../../helpers/api-helpers';
 import { invalidBookings } from '../../fixtures/invalid-booking-data';

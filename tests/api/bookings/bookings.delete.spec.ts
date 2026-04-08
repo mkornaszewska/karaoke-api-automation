@@ -42,7 +42,7 @@ test.describe('DELETE /bookings/:id', () => {
       await request.delete(ENDPOINTS.BOOKINGS_BY_ID(id));
 
       const afterBookings = await getBookings(request);
-      expect(afterBookings.length).toBe(beforeBookings.length);
+      expect(afterBookings).toHaveLength(beforeBookings.length);
     });
   });
 

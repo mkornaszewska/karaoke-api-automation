@@ -49,6 +49,7 @@ test.describe('/POST bookings', () => {
       const fetched = await getResponse.json();
       expect(fetched.id).toBe(booking.id);
     });
+
     test('should create a booking with minimal data', async ({ request }) => {
       const response = await request.post(ENDPOINTS.BOOKINGS, { data: minimalBookingData });
       expectJsonResponse(response, 201);
@@ -56,6 +57,7 @@ test.describe('/POST bookings', () => {
       const booking: Booking = await response.json();
       expect(booking.special_requests).toBeUndefined();
     });
+
     test('should create multiple bookings', async ({ request }) => {
       const responses = await Promise.all(
         validBookings.map((booking) => request.post(ENDPOINTS.BOOKINGS, { data: booking }))
