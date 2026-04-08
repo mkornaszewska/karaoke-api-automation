@@ -25,7 +25,10 @@ export default [
     ...eslintPluginPlaywright.configs['flat/recommended'],
     rules: {
       ...eslintPluginPlaywright.configs['flat/recommended'].rules,
-      'playwright/expect-expect': ['error', { assertFunctionNames: ['expect', 'expectJsonResponse'] }],
+      'playwright/expect-expect': [
+        'error',
+        { assertFunctionNames: ['expect', 'expectJsonResponse'] },
+      ],
       'playwright/no-conditional-in-test': 'error',
       'playwright/no-wait-for-timeout': 'warn',
       'playwright/no-skipped-test': 'warn',
