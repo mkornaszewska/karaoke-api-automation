@@ -20,7 +20,7 @@ test.describe('/POST bookings', () => {
       const booking: Booking = await response.json();
 
       expect(booking.id).toBeDefined();
-      expect(typeof booking.id).toBe('string');
+      expect(typeof booking.id).toBe('number');
 
       const fieldsToVerify = [
         'user_id',
