@@ -27,7 +27,7 @@ jobs:
         run: npm run format:check
 
       - name: Start json-server
-        run: npx json-server --watch db.json --port 3000 &
+        run: npx json-server db.json --port 3000 &
 
       - name: Wait for json-server
         run: npx wait-on http://localhost:3000 --timeout 10000
