@@ -32,7 +32,7 @@ export default async function globalSetup() {
   try {
     const seed: SeedData = JSON.parse(fs.readFileSync(seedFile, 'utf-8'));
     await Promise.all(
-      Object.entries(seed).map(([collection, records]) => resetCollection(collection, records)),
+      Object.entries(seed).map(([collection, records]) => resetCollection(collection, records))
     );
   } catch {
     // Server not running yet — it will start fresh from the copied db.json.

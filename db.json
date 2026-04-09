@@ -7,11 +7,7 @@
       "capacity": 4,
       "hourly_rate": 1500,
       "weekend_rate": 1800,
-      "amenities": [
-        "m2",
-        "tmb",
-        "bl"
-      ],
+      "amenities": ["m2", "tmb", "bl"],
       "floor": 2,
       "has_window": false,
       "theme": "modern",
@@ -37,13 +33,7 @@
       "capacity": 8,
       "hourly_rate": 2500,
       "weekend_rate": 3000,
-      "amenities": [
-        "m4",
-        "tmb",
-        "mb",
-        "db",
-        "nl"
-      ],
+      "amenities": ["m4", "tmb", "mb", "db", "nl"],
       "floor": 3,
       "has_window": true,
       "theme": "retro",
@@ -69,14 +59,7 @@
       "capacity": 10,
       "hourly_rate": 6000,
       "weekend_rate": 8000,
-      "amenities": [
-        "m4",
-        "tmb",
-        "db",
-        "ps",
-        "lc",
-        "mb"
-      ],
+      "amenities": ["m4", "tmb", "db", "ps", "lc", "mb"],
       "floor": 5,
       "has_window": true,
       "theme": "luxury",
