@@ -19,22 +19,26 @@ A comprehensive API test automation framework for a karaoke booking management s
 tests/
 ├── api/
 │   ├── bookings/
-│   │   ├── bookings.get.spec.ts    # GET endpoint tests
-│   │   ├── bookings.post.spec.ts   # POST endpoint tests
-│   │   ├── bookings.put.spec.ts    # PUT & PATCH endpoint tests
-│   │   └── bookings.delete.spec.ts # DELETE endpoint tests
+│   │   ├── bookings.get.spec.ts          # GET endpoint tests
+│   │   ├── bookings.post.spec.ts         # POST endpoint tests (happy path)
+│   │   ├── bookings.post.negative.spec.ts # POST validation & error scenarios
+│   │   ├── bookings.put.spec.ts          # PUT & PATCH endpoint tests
+│   │   └── bookings.delete.spec.ts       # DELETE endpoint tests
 │   └── rooms/
-│       ├── rooms.get.spec.ts       # GET endpoint tests
-│       └── rooms.post.spec.ts      # POST endpoint tests
+│       ├── rooms.get.spec.ts             # GET endpoint tests
+│       ├── rooms.post.spec.ts            # POST endpoint tests
+│       ├── rooms.put.spec.ts             # PUT endpoint tests
+│       └── rooms.delete.spec.ts          # DELETE endpoint tests
 ├── constants/
-│   ├── endpoints.ts                # API endpoint definitions
-│   └── schemas.ts                  # TypeScript interfaces and data schemas
+│   ├── endpoints.ts                      # API endpoint definitions
+│   └── schemas.ts                        # TypeScript interfaces and data schemas
 ├── fixtures/
-│   ├── booking-data.ts             # Valid test data
-│   └── invalid-booking-data.ts     # Invalid data for error scenario testing
+│   ├── booking-data.ts                   # Valid booking test data
+│   ├── invalid-booking-data.ts           # Invalid data for error scenario testing
+│   └── room-data.ts                      # Valid room test data
 └── helpers/
-    ├── api-helpers.ts              # Reusable API request functions
-    └── data-generators.ts          # Dynamic test data generation
+    ├── api-helpers.ts                    # Reusable API request functions
+    └── data-generators.ts               # Dynamic test data generation
 ```
 
 ## Test Coverage
@@ -53,16 +57,31 @@ tests/
 
 ### POST /bookings
 
-- Returns 201 with auto-generated string ID
+- Returns 201 with auto-generated numeric ID
 - All submitted fields echoed back correctly
 - Booking persists and is retrievable via GET
+- Optional field (`special_requests`) absent when not submitted
+- Multiple bookings created in parallel have unique IDs
+- All valid status enum values accepted
+- Response validated against `bookingTypeSchema`
+
+### POST /bookings — negative scenarios
+
+json-server performs no input validation; these tests document the gap between the mock and a real server. Each case asserts `201` and notes what a real server should return.
+
+- Missing required fields (`user_id`, `room_id`)
+- Invalid data types (string `user_id`)
+- Invalid formats (MM/DD/YYYY date, 12-hour time)
+- Invalid status enum value
+- Business rule violations (negative party size, zero duration, past booking date)
 
 ### PUT & PATCH /bookings/:id
 
 - PUT replaces the full resource and returns 200
+- PUT response validated against `bookingTypeSchema`
 - PUT persists — verified with follow-up GET
 - PUT returns 404 for non-existent IDs
-- PATCH updates only specified fields, leaving others unchanged
+- PATCH updates only the specified field, leaving others unchanged
 - PATCH persists — verified with follow-up GET
 
 ### DELETE /bookings/:id
@@ -71,7 +90,7 @@ tests/
 - Deleted booking returns 404 on follow-up GET
 - List count returns to original after POST then DELETE
 - Returns 404 for non-existent IDs
-- Returns 404 on second DELETE of the same resource
+- Returns 404 on second DELETE of the same resource (idempotency)
 
 ### GET /rooms
 
@@ -85,11 +104,25 @@ tests/
 
 ### POST /rooms
 
-- Returns 201 with auto-generated ID
+- Returns 201 with auto-generated numeric ID
 - Response body matches submitted payload
 - Room persists — verified with follow-up GET
 - Array fields (amenities, reviews) stored correctly
 - Numeric and boolean field types preserved
+
+### PUT /rooms/:id
+
+- PUT replaces the full resource and returns 200
+- PUT response validated against `roomTypeSchema`
+- PUT persists — verified with follow-up GET
+- PUT returns 404 for non-existent IDs
+
+### DELETE /rooms/:id
+
+- Returns 200 on successful deletion
+- Deleted room returns 404 on follow-up GET
+- Returns 404 for non-existent IDs
+- Returns 404 on second DELETE of the same resource (idempotency)
 
 ## Getting Started
 
@@ -101,7 +134,7 @@ tests/
 ### Installation
 
 ```bash
-git clone mkornaszewska
+git clone https://github.com/mkornaszewska/karaoke-api-automation.git
 cd karaoke-api-automation
 
 npm install
@@ -112,9 +145,6 @@ npm install
 ```bash
 # Run all tests (starts local json-server automatically)
 npm test
-
-# Run only API tests
-npm run test:api
 
 # Run a specific test file
 npx playwright test bookings.get.spec.ts
@@ -141,14 +171,15 @@ Copy `.env.example` to `.env` and set `BASE_URL` for the desired environment. Wh
 
 - **Sorting:** json-server does not support descending sort. Only ascending sort is tested.
 - **Mutations on live API:** POST/PUT/PATCH/DELETE operations against my-json-server are simulated and not persisted. Local json-server persists mutations and resets before each run.
+- **Input validation:** json-server accepts any payload regardless of field types, formats, or missing required fields. Negative tests assert `201` and document what a real server should enforce.
 
 ## Design Patterns
 
-- **Schema-based validation** — TypeScript interfaces in `schemas.ts` define expected data structures, enabling type-safe assertions across all tests
-- **Reusable helpers** — `expectJsonResponse()` and `getBookings()` abstract common operations
-- **Fixtures** — test data separated by validity (`booking-data.ts` for happy path, `invalid-booking-data.ts` for error scenarios)
+- **Schema-based validation** — TypeScript interfaces in `schemas.ts` define expected data structures; the `roomTypeSchema` and `bookingTypeSchema` maps are used to assert field types across both read and write operations
+- **Reusable helpers** — `expectJsonResponse()` abstracts status and content-type assertions
+- **Fixtures** — test data separated by validity (`booking-data.ts` / `room-data.ts` for happy path, `invalid-booking-data.ts` for error scenarios)
 - **Centralized constants** — endpoints and schemas defined once and imported everywhere
-- **Test isolation** — mutation tests POST fresh resources and use their IDs rather than depending on seed data
+- **Test isolation** — all mutation tests POST a fresh resource and use its returned ID; no test depends on seed data IDs
 
 ## Test Report
 

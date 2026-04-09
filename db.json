@@ -1,13 +1,17 @@
 {
   "rooms": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Shibuya Small",
       "size": "small",
       "capacity": 4,
       "hourly_rate": 1500,
       "weekend_rate": 1800,
-      "amenities": ["m2", "tmb", "bl"],
+      "amenities": [
+        "m2",
+        "tmb",
+        "bl"
+      ],
       "floor": 2,
       "has_window": false,
       "theme": "modern",
@@ -27,13 +31,19 @@
       ]
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Harajuku Medium",
       "size": "medium",
       "capacity": 8,
       "hourly_rate": 2500,
       "weekend_rate": 3000,
-      "amenities": ["m4", "tmb", "mb", "db", "nl"],
+      "amenities": [
+        "m4",
+        "tmb",
+        "mb",
+        "db",
+        "nl"
+      ],
       "floor": 3,
       "has_window": true,
       "theme": "retro",
@@ -53,13 +63,20 @@
       ]
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Roppongi VIP",
       "size": "vip",
       "capacity": 10,
       "hourly_rate": 6000,
       "weekend_rate": 8000,
-      "amenities": ["m4", "tmb", "db", "ps", "lc", "mb"],
+      "amenities": [
+        "m4",
+        "tmb",
+        "db",
+        "ps",
+        "lc",
+        "mb"
+      ],
       "floor": 5,
       "has_window": true,
       "theme": "luxury",
@@ -67,460 +84,52 @@
       "average_rating": 4.9,
       "image_url": "/r/3.jpg",
       "reviews": []
-    },
-    {
-      "id": "d83f",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
-    },
-    {
-      "id": "596d",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
-    },
-    {
-      "id": "36b7",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
-    },
-    {
-      "id": "c227",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
-    },
-    {
-      "id": "68e6",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
-    },
-    {
-      "id": "989f",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
-    },
-    {
-      "id": "45c5",
-      "name": "Akihabara Neon",
-      "size": "medium",
-      "capacity": 6,
-      "hourly_rate": 2200,
-      "weekend_rate": 2800,
-      "amenities": ["m4", "tmb", "nl"],
-      "floor": 4,
-      "has_window": true,
-      "theme": "neon",
-      "is_available": true,
-      "average_rating": 0,
-      "image_url": "/r/test.jpg",
-      "reviews": []
     }
   ],
   "bookings": [
     {
+      "id": 1,
       "user_id": 1,
       "room_id": 2,
-      "date": "2026-06-15",
-      "start_time": "19:00",
-      "duration_hours": 3,
-      "party_size": 5,
-      "total_price": 7500,
-      "status": "pending",
-      "special_requests": "Updated via PUT",
-      "created_at": "2026-01-25T10:30:00Z",
-      "id": "1"
-    },
-    {
-      "id": "76d3",
-      "room_id": 3,
-      "date": "2024-04-15",
+      "date": "2026-02-01",
       "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "a6f5",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "c25c",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "7673",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "6812",
-      "user_id": 1,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "ce9d",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed",
-      "special_requests": "Need microphone stand",
-      "created_at": "2026-04-08T14:58:57.566Z"
-    },
-    {
-      "id": "37cb",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "6ef3",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed",
-      "special_requests": "Need microphone stand",
-      "created_at": "2026-04-08T14:58:57.593Z"
-    },
-    {
-      "id": "6701",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "cancelled",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "4762",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 10,
-      "total_price": 80,
-      "status": "confirmed",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "81e9",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed",
-      "special_requests": "Extra mic needed"
-    },
-    {
-      "id": "7a4d",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "2673",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "20:00",
       "duration_hours": 2,
       "party_size": 6,
-      "total_price": 120,
+      "total_price": 5000,
       "status": "confirmed",
-      "special_requests": "Need microphone stand"
+      "special_requests": "Birthday",
+      "created_at": "2026-01-25T10:30:00Z"
     },
     {
-      "id": "2bf0",
-      "user_id": 1,
+      "id": 2,
+      "user_id": 2,
       "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "19:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "pending",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "f849",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
+      "date": "2026-02-05",
+      "start_time": "20:00",
+      "duration_hours": 3,
+      "party_size": 8,
+      "total_price": 24000,
       "status": "confirmed",
-      "special_requests": "Need microphone stand"
+      "special_requests": "Work event",
+      "created_at": "2026-01-26T14:15:00Z"
     },
     {
-      "id": "091e",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "pending",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "32bb",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "cancelled",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "196f",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2026-05-08",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
+      "id": 3,
+      "user_id": 3,
+      "room_id": 1,
+      "date": "2026-01-30",
+      "start_time": "15:00",
+      "duration_hours": 1,
+      "party_size": 2,
+      "total_price": 1500,
       "status": "completed",
-      "special_requests": "Need microphone stand"
-    },
-    {
-      "id": "c051",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "beaa",
-      "user_id": 1,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "fcff",
-      "user_id": 1,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "4b81",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "3006",
-      "user_id": "not-a-number",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "a371",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "aa40",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "04/15/2024",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "d1b2",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "6:00 PM",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "0ddc",
-      "user_id": 1,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
-    },
-    {
-      "id": "9e18",
-      "user_id": 1,
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "blocked"
-    },
-    {
-      "id": "d2c0",
-      "user_id": "not-a-number",
-      "room_id": 3,
-      "date": "2024-04-15",
-      "start_time": "18:00",
-      "duration_hours": 2,
-      "party_size": 4,
-      "total_price": 80,
-      "status": "confirmed"
+      "special_requests": "",
+      "created_at": "2026-01-29T09:00:00Z"
     }
   ],
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "username": "karaoke_lover",
       "email": "karaoke@example.com",
       "phone": "090-1234-5678",
@@ -532,7 +141,7 @@
       "is_active": true
     },
     {
-      "id": "2",
+      "id": 2,
       "username": "events_mgr",
       "email": "events@company.jp",
       "phone": "080-9876-5432",
@@ -544,7 +153,7 @@
       "is_active": true
     },
     {
-      "id": "3",
+      "id": 3,
       "username": "weekend_singer",
       "email": "singer@example.com",
       "phone": "070-5555-1234",
@@ -558,7 +167,7 @@
   ],
   "songs": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Plastic Love",
       "artist": "Mariya Takeuchi",
       "genre": "City Pop",
@@ -571,7 +180,7 @@
       "is_available": true
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Lemon",
       "artist": "Kenshi Yonezu",
       "genre": "J-Pop",
@@ -584,7 +193,7 @@
       "is_available": true
     },
     {
-      "id": "3",
+      "id": 3,
       "title": "Don't Stop Me Now",
       "artist": "Queen",
       "genre": "Rock",
@@ -597,7 +206,7 @@
       "is_available": true
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Cruel Angel's Thesis",
       "artist": "Yoko Takahashi",
       "genre": "Anime",
@@ -610,7 +219,7 @@
       "is_available": true
     },
     {
-      "id": "5",
+      "id": 5,
       "title": "Kurenai",
       "artist": "X Japan",
       "genre": "Visual Kei Rock",
@@ -623,7 +232,7 @@
   ],
   "menu_items": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Soft Drink Package",
       "category": "beverage_package",
       "price": 500,
@@ -631,7 +240,7 @@
       "available": true
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Premium Drink Package",
       "category": "beverage_package",
       "price": 1500,
@@ -639,7 +248,7 @@
       "available": true
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Karaage Plate",
       "category": "food",
       "price": 800,

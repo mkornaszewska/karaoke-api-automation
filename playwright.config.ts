@@ -37,7 +37,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'json-server --watch db.json --port 3000',
+    command: 'json-server db.json --port 3000',
     url: process.env.BASE_URL ?? 'http://localhost:3000',
     reuseExistingServer: true,
   },
